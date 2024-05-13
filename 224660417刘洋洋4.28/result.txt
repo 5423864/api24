@@ -1,0 +1,60 @@
+test_login_02 (testlogin.MyTestCase) ... ok
+test_reg_ok (test_xzs_reg.MyTestCase) ... ERROR
+test_reg_err (test_xzs_reg.MyTestCase) ... ERROR
+
+======================================================================
+ERROR: test_reg_ok (test_xzs_reg.MyTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\UIdemo24\api24\test_xzs_reg.py", line 12, in test_reg_ok
+    if check_user(name=noname):
+  File "D:\UIdemo24\api24\db.py", line 61, in check_user
+    result = query_db(sql)
+  File "D:\UIdemo24\api24\db.py", line 21, in query_db
+    con = coon()
+  File "D:\UIdemo24\api24\db.py", line 12, in coon
+    coon = pymysql.connect(
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 968, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 1003, in _process_auth
+    return _auth.sha256_password_auth(self, auth_packet)
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\_auth.py", line 183, in sha256_password_auth
+    data = sha2_rsa_encrypt(conn.password, conn.salt, conn.server_public_key)
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\_auth.py", line 143, in sha2_rsa_encrypt
+    raise RuntimeError(
+RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods
+
+======================================================================
+ERROR: test_reg_err (test_xzs_reg.MyTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\UIdemo24\api24\test_xzs_reg.py", line 25, in test_reg_err
+    if not check_user(name):
+  File "D:\UIdemo24\api24\db.py", line 61, in check_user
+    result = query_db(sql)
+  File "D:\UIdemo24\api24\db.py", line 21, in query_db
+    con = coon()
+  File "D:\UIdemo24\api24\db.py", line 12, in coon
+    coon = pymysql.connect(
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 968, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\connections.py", line 1003, in _process_auth
+    return _auth.sha256_password_auth(self, auth_packet)
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\_auth.py", line 183, in sha256_password_auth
+    data = sha2_rsa_encrypt(conn.password, conn.salt, conn.server_public_key)
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python38\site-packages\pymysql\_auth.py", line 143, in sha2_rsa_encrypt
+    raise RuntimeError(
+RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.022s
+
+FAILED (errors=2)

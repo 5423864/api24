@@ -1,0 +1,51 @@
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'

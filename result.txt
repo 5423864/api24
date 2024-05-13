@@ -1,0 +1,8 @@
+test_login_02 (test.case.user.testlogin.MyTestCase) ... ok
+test_reg_ok (test.case.user.test_xzs_reg.MyTestCase) ... ok
+test_reg_err (test.case.user.test_xzs_reg.MyTestCase) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.240s
+
+OK

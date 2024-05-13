@@ -1,0 +1,1464 @@
+INFO:root:===========rua_all开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 194
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"admin","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"admin","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((74, 'bc1cbaf7-85ab-4979-bd83-64c4a5d7ad68', 'lyy', 'hi3Sc4shHokOpPoRt0ERuTvPZPmDtgYIhazN8cn1ArNXSZi/GpaAuJ2Ydjlx4A5olps0W0sFfCcqsb8AQGOYBUpCueellHvwJLmn/4tp6TjCLdgiUET0wfY3b2tuIhRQ46BiUIzeocNvQHEcZEz2ELuugdIpUkdQW65GfUqJtsk=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 6, 9, 5, 34), None, datetime.datetime(2024, 5, 6, 9, 5, 34), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((75, '6adf154d-d0f8-4b0c-a078-66fc37af83c8', 'lyy', 'Dpm51kfxSZe8n4D3KNlTsgPQ9xnvwBbApk6StpvbK3idNfg3QCgFwqucvysFPsHiFE4SImv7IutaQ9c9yYhWmlSKPLOhY/c+igTCmK2o2svBdr1O+7agclSscHi7P071uJSD8iovN7cHDai9KXNQ7Mn8TO+bdSIeez85lm7KvDs=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 6, 9, 5, 34), None, datetime.datetime(2024, 5, 6, 9, 5, 34), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((76, '86d953a5-5956-4da3-a890-c938aae22856', 'lyy', 'BoRIhW11o3jeM+HmhujNpI8mM7Sj+eYnPv/+J/1u2bCp1mPp0lPUS5BlbgRFnfmrK3YmUDLUr2I073vDeezvlcrgT08ejgwqq0Vh9xmGu3CAzvuSHBR/7eaGDOR7YHVyqFGSoFknP7ooORMyvqyIR4PlzJU1IFyR3O58PkNvxXk=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 6, 9, 5, 34), None, datetime.datetime(2024, 5, 6, 9, 5, 34), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((77, '42d40231-bdb4-4177-b2fe-08dc0ee05391', 'lyy', 'PfqRdIuAG/upYDJplC8F3QPpKDnenPz8xXYZ414Ao1HW3M+E/qu7NYFRc72lGKHt1qOl8mbPkdVl7cCj01bnyawemeezsBrum1zV6Tes9NUeuhPWx9xKNU2NKBmlWeE3Orh7mUX/pxpwQO1IAlDE2kUf61Ep5isJGIaSJoC/g4o=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 6, 9, 5, 34), None, datetime.datetime(2024, 5, 6, 9, 5, 34), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:root:邮件发送成功
+INFO:root:===========rua_all测试结束===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((82, '3d3f74d7-3a27-461f-b185-9d359c4ac168', 'peter', 'YOc+VkGqN7F4elhtLlFXUuj4TnBHOIxGlALDqQ4rLodUrSIik2CTY3RYXpvBGLRGJijNtx4QmuTcO8RbIR988zrD3XU4KMXg3YvWNffilUdqgEz5F7OqKa6uyCo6cemiuyLSo6UCj5nZcEDAXYtwJSaOk4GA3iJrWQX88RVJgxM=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 7, 16, 52, 50), None, datetime.datetime(2024, 5, 7, 16, 52, 50), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((83, '9453e3f8-745d-4591-a72e-306caac16012', 'peter', 'XnD29eBOvTD2AVVst0HDPYQbvdJwvIiXBAOgMNdRokULmcOBM2hepexhmWZ/QSTqJdLtj55pDRPJ0rTrTnJCXKjB0IqQOH2QpVrbgKr2+C6ichyJfYhgb8YleyAjRPIEFwzajqZp0Ajts4REai1kI/lOBXDH0+FVtzf24w3XkfA=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 7, 16, 53, 21), None, datetime.datetime(2024, 5, 7, 16, 53, 21), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((84, '255eee9f-dabc-4438-b7f4-7df69eb01c78', 'peter', 'Ky3MQcsrPpTJ7hFiXYgXlOuj2EGhtO1DjtR/Wdfl4t/uNLQdejGS4MNJHxr9Oij7etpADBbwK92l7V1IH3ST2+V93RUmkvmiQmm0iWxaaOdaBqnk142m5uSjDHW2GETtIc7oWou8dX5iqtS6glqOGGLdUGFXEyfKoZT9NqU8Vp4=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 7, 16, 53, 21), None, datetime.datetime(2024, 5, 7, 16, 53, 21), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((86, '7edf6801-7c3c-4a08-80d6-db3289f81dcc', 'lyy', 'FT+rdUG+Yp6lYJYKY8hOJGNqEEtWdc+UTSNm2lwUYI5be63K4zRoQcWq2H5S7fsE6VEi8PLpkXc4WTnMQnMfSORuy4FKWDpsaKVvk4NnRbYGjZGFGWbfNcEgmsElAC9+DoMTbNdQQaoCgDY/2Q4fcP7vDThyUIb0XYIzxrM07ZA=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 7, 16, 53, 22), None, datetime.datetime(2024, 5, 7, 16, 53, 22), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
+DEBUG:root:邮件发送成功
+INFO:root:***********发送邮件***********
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((87, '08ebb85a-45e0-43db-9f43-efc0f955539a', 'peter', 'dZaPvKfp3qs4GIFSgg3kzIFjYFCsYvI23od8J9DdyzuMsgQlmuXcwP7+u277O0ODGJYoQnfXhhu29QRG9PNrf1/vlxAuDVvwIRC6YW6LnUnRK0PMBJ/X/83fEENiQ9/FCigqVU9vgp48ds7tjmnuZLKlgoGVAUcaj0Szr6YeYrQ=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 7, 16, 54, 8), None, datetime.datetime(2024, 5, 7, 16, 54, 8), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((88, 'fdff3f16-0b08-4963-93f7-05c938b42b5a', 'peter', 'G9IRfyT6777u2LKkMUtmRDFzriXwJUwt7H0Nb8ELAJnEa5ajRrirStxEDKQhHaYFMdEsxYgy//qgkyb+yKpZnTMF7xN9xzr2PTl0smqf0Vul07wFAi5Uw0ypem27/rHoETzR0FyiioM39pJFl7V/30/1dsVLR/GoLPi4X8ajJ5s=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 7, 16, 54, 9), None, datetime.datetime(2024, 5, 7, 16, 54, 9), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((90, 'b1070273-70e3-4570-9bb8-cd0697c277b8', 'lyy', 'InJ/kkX1DSnAgbxlC1z49BSjpBXR+uffcs3nCRRmTKg/etLIQ+QfYUtzjnblX4Xt5h1nzSG29kYnI2sbArF7IkSTBmyLQvWervWM4ClioYxH4ffieDGWWICb80Box8T4SOU1Os2mgCZnFhp8PpT6AKMnsWAG792nRLkcFYz7GT8=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 7, 16, 54, 10), None, datetime.datetime(2024, 5, 7, 16, 54, 10), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
+DEBUG:root:邮件发送成功
+INFO:root:***********发送邮件***********
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((91, '6781af3b-1af3-4dc6-845c-3e226e4086c0', 'peter', 'QHpVMVyNOjs7hJzUyRLKH+ywci7LvPBgMXobRedE6Y62Efwr290oAzUsYrtujz49txBYqcMOiZeHvlpkVKQWU92hOni10+AwZ3TrCBf18ALrFtyLVelU+BFyPWNCfa8jLAHbgEIssU7JgnL07reHRj1jtuGMyGGmCvmluFKlstk=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 9, 11, 42, 40), None, datetime.datetime(2024, 5, 9, 11, 42, 40), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((92, '342c6f8d-f090-4a1b-9afc-0fe3e4ead0f6', 'peter', 'j/m1pMU6WM7Nd9wxYIQ5YJtXLSecwZhOZVC/dbDZ6GACLxkhjiMUk6K4UuKLnUP5x1xGDAawm/ahfduznZz7sFa7kAnTn1QV0uzo8uh6fWNbFWvYgx8VfV8tGIzOkffGiu6WUYgUnT0gAwx/xxCXfSFrvb8gqivLXbUEqIzauhw=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 9, 11, 44, 25), None, datetime.datetime(2024, 5, 9, 11, 44, 25), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((93, 'ea0ab39a-1dba-4c9d-a7be-e4b1ab7fff98', 'peter', 'Fu/UdpV5gCyfx0QSSnjkQkcbuSS+7Nus6lX/H65KP2OpkPrzsHWBM8Twp/jhp9eAVMrmV5tT/m7reHzWUO/+cD87ehYSJFDQ89+y+uMgCuXIvtOn8y5Oi01LNO3z+HyexDdqi7zhIKvbhuiFbYyCMKcYZlo3OkYF9oOH+5BxtT4=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 9, 11, 44, 55), None, datetime.datetime(2024, 5, 9, 11, 44, 55), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((94, 'dda43fc8-8747-4c98-93aa-a50c70adbd2f', 'peter', 'Svgov+kTLshh5Myf+D8k7Uf0+V6wNl1ixMyCFa70Q3b4d6LfbgE7Mt6/e3ATMqWCX0Isib4aBfebdEJPp7pWmKE38WQmdlhHH+Bz5YebIpNV1RsAMyv5NDUE7AorrOSkPZPmzU7t8Ws/udGcqcNReEWN4JJTS+TZZ/fA7RzWRoc=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 9, 11, 46, 28), None, datetime.datetime(2024, 5, 9, 11, 46, 28), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((95, '880f3504-b281-42df-a878-f817dedec45b', 'peter', 'oWV1kADbXXbDS7TNFZByOvU3MjpnWN+wJgTrzawDEfqrD/Wk9NC7DCKDoeELDvRriO4DLSroXSEkEzjPJMA7VUmtEkqQEzNrliUGyOnm0qSLiG6CuPI+nO39FMjdZ9scrSOE3tBJEj/zykneX+pIhuo9+MWvjvDIZwukbm1S13k=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 8, 52, 22), None, datetime.datetime(2024, 5, 10, 8, 52, 22), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((96, '43aadb72-0a82-4ae3-8ffd-a510bc20d242', 'peter', 'JleaAnYgscjPtMdSA7rImVQI+wzJ4NX8bQ5SbERgW2YL4+Lco4c+rSeUDq9ZVcIH+lbKE12uPJLzJUX8ZRpZWRmaf6eXeSUzE7HaUiQtkj8b/HZDYPpNUOwb4idPKkdw5RjQrASiW/IXHrthNbg2GXzJ0k+XNDwc/kcDNb3H4l0=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 8, 53, 48), None, datetime.datetime(2024, 5, 10, 8, 53, 48), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((97, '6c367714-aefa-4104-ad64-5cdc71d254a1', 'peter', 'iX+E7XooBlJtlUOBRiAV0JOZ5Ov3HuN5RO6gq5UWY372lC1ATz++sY0ICwNBwcSvY7C/xALvxDNr7xhJL4x3jwJxsMvQXBVDFfBica+pn0IBxYp/04H8pGvxGeuYusFEx7XXnDw6VD9cNrvnkxGtkq16BkxwLaTUbO6ebNBwYRM=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 9, 7, 52), None, datetime.datetime(2024, 5, 10, 9, 7, 52), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((98, '346ea275-b4c7-49a1-b195-4ec1fb2624d7', 'peter', 'oDxjKtiPtIPeg4yE0Kd6glsB7ne56ybnVR1k6PZ67VnhA8YlTAP8ijX3gj6Mprn7EzHJtU12Bxck/H7dlcieBbDec8GRGJQ8QApy13ycG5upLZ3ixc6mH7KsP80L/uAMpxe+i0q/4fgie+0EscazVO14VW/MbQoAJrV8F5YtW9c=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 9, 17, 40), None, datetime.datetime(2024, 5, 10, 9, 17, 40), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((99, '2fe87e93-deef-45b0-a572-ab12d184ca5b', 'peter', 'FwPMCH1nZ2lstfxJ1lwwl/YMm1eVFqlnZc0lkGBGBM1FR+IydJImmyC0MkHpUfFZc42EiNg/r35Lg/jJT9pCY83ec1RaK/W4j+BB7+XsbZ8URkb3Sg9OcKPY/ZPP1cKashBMv0H8vEqC8s0TmhaKj/XzgvWzl76pwNVip6aW4mI=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 9, 55, 2), None, datetime.datetime(2024, 5, 10, 9, 55, 2), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((100, '5226e537-6436-4e46-9e99-7e4decb93e84', 'peter', 'orh0Yz1peakEm1Kw+bqTS0oMZyt7Jc1d3Yzt1KQe91KmdVyMFoi0Rd8Y7cl2mntUjluLkHlKBXOH4oL2/nqrQ0GJh9GSnYUXNn/d4V1B9fOSUhLpf6Bj/oJysRE21vqPD+Gz6VpHe5UaBurGCYZRE0IiNdGcOdRRANZCoASVbWY=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 9, 55, 8), None, datetime.datetime(2024, 5, 10, 9, 55, 8), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((101, '0d711145-2008-43e9-9d09-5b4747e10a99', 'peter', 'b/Zi9cem5laOGwfhKxG+hUSGz2mln0RahhHdfT/z8WJq1QKWbMTLLxG7CZTgMQcMxCigJ3nPtAB+26oPAPZi7FrETalodfF8N5/Yu/6LE9lDtHmMiOFUo9OIMYviene0kz4f5UWQd8Q1FiJtBocYa23rE6r5HfTw1C7q/OOjfkk=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 9, 55, 31), None, datetime.datetime(2024, 5, 10, 9, 55, 31), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((102, '9893c4f9-39e1-4cd6-846b-c192ef7f623f', 'peter', 'gNYW2H6U4V2Vg655VOF0N+38hJeb/sjpSlxgrOj4n/r8YqlW2vFgysjzz7HMupJTYdvFOiPCTdujzDgjQCLpLs9T9/yjtfb2hERwcbqKKYSr9GTI+ncwLiD7sE9IZq3hMGsAW/Q2QuKdmS7SLGgxc/XMVslP00LNUjVGQO1EHz0=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 10, 22, 25), None, datetime.datetime(2024, 5, 10, 10, 22, 25), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((103, 'b5eda6e3-aae0-4318-ba50-d186bce08af9', 'peter', 'Ek6L0bXv9iWlj43S59AJ1puxyvcwdyq1JO+rTwPmH52g6FLxJuKC89XpavKvq3Oj0EkxvJU6kvhInFVCktG/ENKj1d6/M4rIjppJRKa3XFPdsw8jUfxMRt+dgw5r3nS+zxGwYnegZ+U5htpLYtCftKyOlMmAH6uWs+WgUff80pU=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 10, 10, 25, 56), None, datetime.datetime(2024, 5, 10, 10, 25, 56), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((104, '1d107344-bfe1-4218-ba6e-d5910b807e6c', 'peter', 'Ox52VDrObHZLaVpkRlwN7iSpijRDQAOqDQe9VSHgifxCveF3/gustKT8/t0VWSNP7Jq+arYMBwOlCOp59QCx3xzYrcWlgINXRKka02tPrww0arOWDAgZGRC0XtNIVxQG5VUHMIEqSK6ijd21Flv3FRqOdtCSAULJx3WEDWQkCDM=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 8, 44), None, datetime.datetime(2024, 5, 11, 16, 8, 44), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((105, 'b1dc1541-adc4-4bfe-a744-c78a31aafccf', 'peter', 'GCKuGB2KPGqkWVjZ4Vvi35eXbGih+y+EXCBU0k7fE4zUzoNRrvMXkAeSxn00qPiwCF7LCM5pPaLo3uA1cbw0SmmvJ/kH5/I1os0jGcElHsEvkvBgH8u0aZhDgbOdKQtq16QfZsd7nExLZWEZ1+5i6d1nHQrycGBuN4VPumfGD8c=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 9, 21), None, datetime.datetime(2024, 5, 11, 16, 9, 21), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+INFO:root:===========测试结束===========
+ERROR:root:[Errno 11001] getaddrinfo failed
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((106, 'fe287359-36fb-40ed-87e1-aaa95f6437ee', 'peter', 'h4rEq/AmmRQ1whjSHo2hbw+d54cZFwJe/+ckbfLlVhNRj5huEMTMXza4zHkgYOs2p6Z2IqWiI5hwZZWARLszKZY2hrCOjCx8hT1gclbvYH2tQJhb0n17h6zcT38LXDBl6rSztmtEH4wqgXs2a9z2a6K1wqNTCmrFXrQO+QG0bu0=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 10, 10), None, datetime.datetime(2024, 5, 11, 16, 10, 10), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+INFO:root:===========测试结束===========
+DEBUG:root:邮件发送成功
+INFO:root:***********发送邮件***********
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((107, '38d339b1-2233-4f5e-9e41-4c9575b34ce9', 'peter', 'R08aPxGY7668+gd+X/DWD1r4VJ2LKwHSE20HlPiV6BQjxrl50+sdsyHmOkRSy1ZFTUtt9Z14z77ckexYtG3aG4mbaq9yMfsyFDFUB/EB2zg1nd6Y/eAgVOdIwTk3vdTcxrA7wNcRwCPdKX5025RgmM7lfJiFpSHm6EO8v72IlxY=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 12, 6), None, datetime.datetime(2024, 5, 11, 16, 12, 6), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+INFO:root:===========测试结束===========
+DEBUG:root:邮件发送成功
+INFO:root:***********发送邮件***********
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((108, '1a4fd2d5-6aec-40fd-addc-1ec26431c2e7', 'peter', 'Vv8mMNeXztrQUV2ITdodpk0zU4wO3GWOrR3leuQ1RiOCILX+nb5DP3ZtA7pnAOqxkMZUeaxPoiPcHDdWqRZT2s+yp6X0FPpcHUprJehMYP8IlDnEZfdvfu8mYb0P1DZHNujIF4uE+96WBXavyB9ZfAx5d/Hi8c4+JqcfVV10YLc=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 12, 45), None, datetime.datetime(2024, 5, 11, 16, 12, 45), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+INFO:root:===========测试结束===========
+DEBUG:root:邮件发送成功
+INFO:root:***********发送邮件***********
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((109, '089d446b-13b0-4980-ad13-35524be2265f', 'peter', 'mZOYwnPGem+GU6HSlx4mdOx55CIlRAjeqSKl026x/2xvrReeX/U7AlI6OelLRqzA3qQ8rO2+v9S5lq/Cv2zWbEm4W63ZG7Mpt6wH6bOuwhSvYR2J6qpug12GOOHtwC4wRXvWIdfXJoG2Yjf7pfJKlZgYi5GU1hquVL0M4mGlKL8=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 23, 40), None, datetime.datetime(2024, 5, 11, 16, 23, 40), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((110, '82fe9948-188e-4901-b49f-ea315ee1d56b', 'peter', 'iRp5zsKKVOX7JIgmSFjb2+IZQyGDpohYhfass9yiiDSH+rr5uxVhcrsU8e3nHlikA2f3gRa0wzok0BdXWTCBHXm7xrR3I7H7IZGfv34ENSgf9zeq+hQFvBDLkMRIvehWmstm6fp8Ggs9oQS0EnVcjjMnykpQ986wRh8LHdfmZ4c=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 23, 40), None, datetime.datetime(2024, 5, 11, 16, 23, 40), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((112, 'aa7ca43b-7a6b-48a0-b348-36704942acd4', 'lyy', 'cbTVjNZcyOwXKlLr2hg9tvQEVnhUJXoyg7sPv9outz41/QrAKbwc09dR2pjyCtgevD6XzlojkzDgQnaRj2uxA1ofcwQwMZI/Lk+TMQsPX7kXYMP/D7+ok0t0oUkEB4m/4euoSEfx+gev1TSGJKcj6eh0xQ/krRfMIKoCMZgdK78=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 23, 41), None, datetime.datetime(2024, 5, 11, 16, 23, 41), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
+DEBUG:root:邮件发送成功
+INFO:root:***********发送邮件***********
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((113, 'caae9ff4-de49-4d3c-ad16-698fd7268128', 'peter', 'TIoUhYXn8m8ksCADsBZisYE7jakiGeiUAFAUWFRlSd7SpGj913Jk09YB1RX2r9y6a8+fdxZ4R1Aq/n95Phmge4TcGgB2y61ItRb6idPFYBNe/LByunEmyd1Pn15JbaDK+XM0DhJkbMbNSERAtDl7oojtTHLzPWCBTE428kRaMqg=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 31, 19), None, datetime.datetime(2024, 5, 11, 16, 31, 19), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((114, '1bda5157-b723-4118-a903-de278c11f3e3', 'peter', 'ot+UJmeZ8qWahLmBUsk19wVcG5dg2v2K88fx38lRoX+Enff1w/v45kPEE3BLd2yx60AoqRMHZRPQ3eXnapWmeBadiwJz4tmtUhSy+g8KhV6s8xg2IGAtRMXMAHkXg63rKI0aqp5bRup+HoDkwndvCboBleOvGwBitL9/8Ov6Ji8=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 31, 19), None, datetime.datetime(2024, 5, 11, 16, 31, 19), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((116, 'a92c9a32-b462-4498-a3a0-db350ae99f5d', 'lyy', 'OcYRi9mtMQpqmJdoCRoXsf+YxytyeIGfwf2R8giQ9fCCu0wtfrOEyT45CmS6bs3cVx4QgYwTezK76oCBxIc7wF+7IZNkfnPTzuVQ03SPWn1cmLIzTTiOQvmN0O+F12nUU10+Xeq06N75TcEabuMNI5FmvT2VmlNFSy07zrHh6wc=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 31, 20), None, datetime.datetime(2024, 5, 11, 16, 31, 20), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((117, 'e3b727a3-319b-4452-8728-7271277a985d', 'peter', 'VFM56n8O2BnVLBruP6mPEV6vDJLFCJgUreYqE2DByn9Enu8hMBEcb2V3uWGsUfZb/5TUwIDdP44EN4TYJu609W4/RNprZQR87m4nTfmOn2YmDAQfTTy5LX8NwgrM/JdHlPExrxleG/ipSS4/zjIfhxt855mURBM6ziad/09Q57w=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 33, 47), None, datetime.datetime(2024, 5, 11, 16, 33, 47), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((118, 'a5bb729b-1ee9-4d61-b125-43bce34f8598', 'peter', 'TW2FvpflKNm4DOLeO341bzC/CrBBvNqQ+d48op7Y+pzwCC9KkX6gZvdReuxNRtYUKScAmniqy7IPZMT3CoqkI71zkWYkCiTsiDBIXgExaC7BT0Z34ikVd48HJeCIq+wFPO0PbpGcXtK5gHm0VaGkhFWwtCmpj0o+M5r1htGVUoM=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 33, 48), None, datetime.datetime(2024, 5, 11, 16, 33, 48), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((120, 'f4c7477e-ff50-46c8-bd72-108bdd3dc680', 'lyy', 'KjSEKWSfYbZSPFRxeW3zk6cEyBeTTGk2/mZDctx6c+igQlMZLTus6XXFk9nNBhSly6c3tbfJUVaD8j+BgDgBmX+jfZgV3gisB8BIwpF7vWnZ/l/oLfTO+FDEpABMSHtmqmfZEnE1AyUtiQhIzYqkC7HA27yid7oZhZUxngxjzTE=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 33, 48), None, datetime.datetime(2024, 5, 11, 16, 33, 48), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((121, '21967a77-b180-4a2b-9df2-80479fd8da41', 'peter', 'CbMt0/nxVTossuYnpijThb7RRBh/o1k2m+36w7uP9EFOH5HbiBjSIfvbqEWrMltgBrETd5DE3YcllhlaCZX3iXH3nzvmm7pBbb49rXNl1U3fMtMnK4cbfiHajIMc/3zxdyvxuq9C1Eu+mJlCMjoilbwKQCkoyOD8qXA5mnX8SQw=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 34, 24), None, datetime.datetime(2024, 5, 11, 16, 34, 24), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((122, 'ff18169e-a558-4ed5-ae83-f8ef427e25b8', 'peter', 'VfGjlzFgBcVVs8wK0qBwDd5YvyF/L/svPJdbx+cTVQaaj9IQ9a5+DdlMakO1IXgowx384KfK0RNhZWW07tbqPIhLyldO5D8awvInb37h1Zl7HG5cZnLvbnmp47h1G/uQeHjRQldESce1d1067t1+bGFVt6z1wd5/Ci/UwitgrY0=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 34, 25), None, datetime.datetime(2024, 5, 11, 16, 34, 25), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((124, '8025b1cd-dbe7-4d43-9b38-8e5a0eec087b', 'lyy', 'nOg8lic+vzyxSAxiuW85n5oWw9apESHtT5uKPnXU7KiNOTdM+Vpbc++1DLDC8i//dOcY5RZ/rswS4PB9pbDwR9GfCfg+E40Dh/hDWgL3GEOjyHMvi2Ab+YZNlJjV095vHOb95peU0xTUYYhIgI9Z9XGiuoVDKC15+mcqTElFg0I=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 34, 25), None, datetime.datetime(2024, 5, 11, 16, 34, 25), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((125, '4740569f-fb59-4430-a6db-a469b6ca43a8', 'peter', 'Y8ZLI/WfMHz8JvbDXOJrMU/4ue6J3/AbynoMU/fI0w5vTXo54q4712uktFQ2keZeTG6sLvKE4jWsL4ZTBxEmzB9o5bvaOsudF969SJcJWEJc9vWFyaaA91Y39sZYB8U+J0aXIRDSSYjfLUnF56bwjSm3oG2L3h/bgtWwv+W8nLk=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 37, 23), None, datetime.datetime(2024, 5, 11, 16, 37, 23), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((126, '5b747d99-d546-4a62-a151-ba2242710277', 'peter', 'mhpWCYIpZchkveTPJBWSzHSHMZSeahGyEPxJ/F1pcGrGCw7FbYPhXHRqrgLHAAaefDHZly3Wbf96PJfbGKCa2CcmwZ2Xkvf7IMEzGcHT2LD8QT5f/PNgFU6Eu1Ob93Ev6xChyyRvj2zT1uVTcJaW7m/yOJvOkAQhRLr4FA2czTQ=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 37, 23), None, datetime.datetime(2024, 5, 11, 16, 37, 23), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((128, '8289305e-e4ab-4391-bf09-4499a9aa6bc3', 'lyy', 'H82h64jKUbaqUFo5atrWv+daJ32Y+mL4YN2S8KLm5x0UqVXa1W7WDBhWDQD0VZNCjDYztc8CZcGPXFv99wPbtghFP7Y0UwN7lnVT4uNBq1++L1yewJeNDLH/CuPyUx4QP1Wx8XyruZn+2qKCZ/SBeebXNjc8v1cwTDaKjP0iyS0=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 37, 24), None, datetime.datetime(2024, 5, 11, 16, 37, 24), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((129, 'ca9e974b-884d-4a2a-8bac-5047f2bb9b2f', 'peter', 'a4dNLZPlKKj2zjiN9uhJkThTUZxig1GDhajBxSnHC5XeZ3t8nnihCv5h6XbHzYK/amq/+EqcsabMMT34gyhQxfV6s4MYR07bZgOM6qtRIOX5mPLcXY+WaCUNKqL9RK2/T9J4jXsPhF3QgmMdgDdZtghPO/FSuPojJfuWfaqZPXY=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 40, 41), None, datetime.datetime(2024, 5, 11, 16, 40, 41), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+INFO:root:===========开始测试===========
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{'code': 402, 'message': '用户名或密码错误', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': {'id': None, 'userUuid': None, 'userName': 'student', 'password': None, 'realName': None, 'age': None, 'sex': None, 'birthDay': None, 'userLevel': None, 'phone': None, 'role': None, 'status': None, 'imagePath': None, 'createTime': None, 'modifyTime': None, 'lastActiveTime': None, 'deleted': None, 'wxOpenId': None}}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{'code': 1, 'message': '成功', 'response': None}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:((130, '0db50b98-17ca-4bbd-a0d9-4a8f3be604fc', 'peter', 'LloDNFuChy2IHlwR0poKj81plapLpAfvUp+fP6ayGuB+LRW6BoFns9Ii5nGDKu/bXf5P4Rw49k35xUEwM1KioAHOWL7p9SGsg67JRfCT8ujzS4tustZlUET3CWvAVf6K8UHa072tA6FRjhdj326O2zbQwSwaXO2UluXMmL7ICMQ=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 40, 42), None, datetime.datetime(2024, 5, 11, 16, 40, 42), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'lucy'
+DEBUG:root:((35, '6dc15630-0185-474f-a68f-764dde15a6da', 'lucy', 'cH6MZT/OO/hcuzGbFf+Vng0NYdtg8Yqvu6SEXsD2HElaGEVjAQA55dYuR24UJ4CHpeTi//eA2thXrolmK4EeBkg2RTPpGbswrjc41Gceg3vy5KwNdXQ6qB1t54dZuODcCZt2zFVRNCsZsfdvObibj+jAYcuz1F8CxDl6WomMT3E=', None, None, None, None, 2, None, 1, 1, None, datetime.datetime(2024, 4, 26, 9, 55, 55), None, datetime.datetime(2024, 4, 26, 9, 55, 55), b'\x00', None),)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{'code': 2, 'message': '用户已存在', 'response': None}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:测试用例：login_ok
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"student","password":"123456","remember":false}
+INFO:root:期望结果：成功
+INFO:root:实际结果：{"code":1,"message":"成功","response":{"id":null,"userUuid":null,"userName":"student","password":null,"realName":null,"age":null,"sex":null,"birthDay":null,"userLevel":null,"phone":null,"role":null,"status":null,"imagePath":null,"createTime":null,"modifyTime":null,"lastActiveTime":null,"deleted":null,"wxOpenId":null}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err1
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"adminq","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err2
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"","password":"123456","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+INFO:root:测试用例：login_err3
+INFO:root:url:http://192.168.55.23:8000/api/user/login
+INFO:root:请求参数：{"userName":"peter","password":"","remember":false}
+INFO:root:期望结果：用户名或密码错误
+INFO:root:实际结果：{"code":402,"message":"用户名或密码错误","response":null}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_err
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"lucy","password":"123456","userLevel":2}
+INFO:root:期望结果：{"code":2,"message":"用户已存在","response":null}
+INFO:root:实际结果：{"code":2,"message":"用户已存在","response":null}
+DEBUG:root:select * from t_user where user_name = 'peter'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+INFO:root:测试用例：test_reg_ok
+INFO:root:url:http://192.168.55.23:8000/api/student/user/register
+INFO:root:请求参数：{"userName":"peter","password":"123456","userLevel":1}
+INFO:root:期望结果：{"code":1,"message":"成功","response":null}
+INFO:root:实际结果：{"code":1,"message":"成功","response":null}
+DEBUG:root:delete from t_user where user_name='peter'
+DEBUG:root:select * from t_user where user_name = 'student'
+DEBUG:root:((39, None, 'student', 'student', None, None, None, None, None, None, None, None, None, None, None, None, None, None), (47, 'aca9c49e-f32e-4a85-b2f8-945aa0ae33ba', 'student', 'L5epydah0uoEHssDQvJ5psTCbHqeVKBlvvaTgmTZtwqR0CMheYbvN7fb4P7hj9sF0W5UsRgpmi7sCy57oVHaQBnZWTBuhX1S68EK3yapr5Xj86146CUheffh24SLJk5yEVtf71BIzOcKPVtNZyWNND4q9b9g7QUvvh25I9qoK04=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 4, 28, 10, 31, 58), None, datetime.datetime(2024, 4, 28, 10, 31, 58), b'\x00', None))
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:()
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/student/user/register HTTP/1.1" 200 None
+DEBUG:root:select * from t_user where user_name = 'lyy'
+DEBUG:root:((132, '3ab53a17-46d1-4a51-82ce-cfd693af21bd', 'lyy', 'fLvQhfMXVm/9IXzr1tyvIVyKGEIb+jj6fadRsmmfgANjcqtjZGXsTYV2XzQafBjMQlTKqHOoWG177jPsGZZYIUg52zihZWYiruSkIX2I+udGCMImTtaan3qsxJnav65ZtQXUAolMFaq45h5hsrFh7nPJKiyT5WoKOtIPmhxGGQU=', None, None, None, None, 1, None, 1, 1, None, datetime.datetime(2024, 5, 11, 16, 40, 43), None, datetime.datetime(2024, 5, 11, 16, 40, 43), b'\x00', None),)
+DEBUG:root:delete from t_user where user_name='lyy'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 85
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.55.23:8000
+DEBUG:urllib3.connectionpool:http://192.168.55.23:8000 "POST /api/user/login HTTP/1.1" 200 196
+INFO:root:===========测试结束===========
